@@ -1,12 +1,12 @@
 public class City {
     private String name;
-    private String State;
+    private String state;
     private double highTemp;
     private double lowTemp;
 
     public City(String cityName, String stateName, double highTemp, double lowTemp) {
         this.name = cityName;
-        this.State = stateName;
+        this.state = stateName;
         this.highTemp = highTemp;
         this.lowTemp = lowTemp;
     }
@@ -16,7 +16,7 @@ public class City {
     }
 
     public String getState() {
-        return State;
+        return state;
     }
 
     public double getHighTemp() {
@@ -36,6 +36,6 @@ public class City {
     }
 
     public void printInfo() {
-        System.out.printf("%s, %s (High = %.2f, Low = %.2f)\n", name, State, highTemp, lowTemp);
+        System.out.printf("%s, %s (High = %.2f, Low = %.2f)\n", name, state, highTemp, lowTemp);
     }
 }
