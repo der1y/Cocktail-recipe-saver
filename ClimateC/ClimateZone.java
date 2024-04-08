@@ -2,14 +2,14 @@ import java.util.ArrayList;
 import java.io.*;
 import java.util.Scanner;
 
-public ClimateZone {
+public class ClimateZone {
     private ArrayList<City> cityList = null;
 
     public ClimateZone() {
-        cityList = new ArrayList<City>();
+        this.cityList = new ArrayList<City>();
     }
 
-    public ClimateZone(String fileName) {
+    public ClimateZone(String fileName) throws IOException {
         cityList = new ArrayList<City>();
         String currCity;
         String currState;
@@ -17,25 +17,25 @@ public ClimateZone {
         double currLowTemp;
 
         FileInputStream cityList = new FileInputStream(fileName);
-        Scanner inCL = new Scanner(ciytList);
+        Scanner inCL = new Scanner(cityList);
 
         while (inCL.hasNext()) {
             currCity = inCL.next();
             currState = inCL.next();
-            currHightTemp = inCL.nextDouble();
+            currHighTemp = inCL.nextDouble();
             currLowTemp = inCL.nextDouble();
 
             City city = new City(currCity, currState, currHighTemp, currLowTemp);
 
-            cityList.add(newCity);
+            this.cityList.add(city);
         }
 
         inCL.close();
         cityList.close();
     }
 
-    public void addCity(String newCity, String newState, double newHightTemp, double newLowTemp) {
-        City newCity = new City(newCity, newState, newHightTemp, newLowTemp);
+    public void addCity(String newCityName, String newState, double newHightTemp, double newLowTemp) {
+        City newCity = new City(newCityName, newState, newHightTemp, newLowTemp);
         cityList.add(newCity);
     }
 
@@ -84,14 +84,14 @@ public ClimateZone {
         double coldestTemp2 = 100;
 
         for (City city : cityList) {
-            if (city.getLowTemp() > coldestTemp1) {
+            if (city.getLowTemp() < coldestTemp1) {
                 city1 = city;
                 coldestTemp1 = city.getLowTemp();
             }
         }
 
         for (City city : cityList) {
-            if (city.getLowTemp() > coldestTemp2 && city.getLowTemp() != coldestTemp1) {
+            if (city.getLowTemp() < coldestTemp2 && city.getLowTemp() != coldestTemp1) {
                 city2 = city;
                 coldestTemp2 = city.getLowTemp();
             }

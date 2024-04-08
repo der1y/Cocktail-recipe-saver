@@ -1,10 +1,10 @@
-class city {
+public class City {
     private String name;
     private String State;
     private double highTemp;
     private double lowTemp;
 
-    public city(String cityName, String stateName, double highTemp, double lowTemp) {
+    public City(String cityName, String stateName, double highTemp, double lowTemp) {
         this.name = cityName;
         this.State = stateName;
         this.highTemp = highTemp;
@@ -20,22 +20,22 @@ class city {
     }
 
     public double getHighTemp() {
-        return hightTemp;
+        return highTemp;
     }
 
     public void setHighTemp(double highTemp) {
-        this.name = highTemp;
+        this.highTemp = highTemp;
     }
 
     public double getLowTemp() {
         return lowTemp;
     }
 
-    public double setLowTemp(double lowTemp) {
+    public void setLowTemp(double lowTemp) {
         this.lowTemp = lowTemp;
     }
 
     public void printInfo() {
-        System.out.printf("%s, %s, (High = %.2f, Low = %.2f)\n", name, State, hightTemp, lowTemp);
+        System.out.printf("%s, %s (High = %.2f, Low = %.2f)\n", name, State, highTemp, lowTemp);
     }
 }
