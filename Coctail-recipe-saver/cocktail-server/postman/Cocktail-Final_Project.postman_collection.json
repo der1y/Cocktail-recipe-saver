@@ -1,0 +1,603 @@
+{
+	"info": {
+		"_postman_id": "f037fbea-2fe2-44c4-a525-9842da70a300",
+		"name": "Cocktail-Final_Project",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "37778273"
+	},
+	"item": [
+		{
+			"name": "Auth",
+			"item": [
+				{
+					"name": "Cart",
+					"item": [
+						{
+							"name": "Get cart",
+							"request": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "{{baseUrl}}/cart",
+									"host": [
+										"{{baseUrl}}"
+									],
+									"path": [
+										"cart"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Add item to cart",
+							"request": {
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n    \"productId\": 7,\r\n    \"quantity\": 2\r\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{baseUrl}}/cart/items",
+									"host": [
+										"{{baseUrl}}"
+									],
+									"path": [
+										"cart",
+										"items"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Remove item from cart",
+							"request": {
+								"method": "DELETE",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{baseUrl}}/cart/items/4",
+									"host": [
+										"{{baseUrl}}"
+									],
+									"path": [
+										"cart",
+										"items",
+										"4"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Clear cart",
+							"request": {
+								"method": "DELETE",
+								"header": [],
+								"url": {
+									"raw": "{{baseUrl}}/cart",
+									"host": [
+										"{{baseUrl}}"
+									],
+									"path": [
+										"cart"
+									]
+								}
+							},
+							"response": []
+						}
+					]
+				},
+				{
+					"name": "Wishlist",
+					"item": [
+						{
+							"name": "Get wishlists",
+							"request": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "{{baseUrl}}/wishlists",
+									"host": [
+										"{{baseUrl}}"
+									],
+									"path": [
+										"wishlists"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Get one wishlist",
+							"request": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "{{baseUrl}}/wishlists/1",
+									"host": [
+										"{{baseUrl}}"
+									],
+									"path": [
+										"wishlists",
+										"1"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Create a wishlist",
+							"request": {
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n    \"name\": \"An added wishlist\",\r\n    \"items\": [\r\n        {\r\n            \"productId\": 4\r\n        },\r\n        {\r\n            \"productId\": 3\r\n        },\r\n        {\r\n            \"productId\": 2\r\n        }\r\n    ]\r\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{baseUrl}}/wishlists",
+									"host": [
+										"{{baseUrl}}"
+									],
+									"path": [
+										"wishlists"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Add wishlist item",
+							"request": {
+								"method": "POST",
+								"header": [],
+								"url": {
+									"raw": "{{baseUrl}}/wishlists/1/products/7",
+									"host": [
+										"{{baseUrl}}"
+									],
+									"path": [
+										"wishlists",
+										"1",
+										"products",
+										"7"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Add wishlist item existing",
+							"request": {
+								"method": "POST",
+								"header": [],
+								"url": {
+									"raw": "{{baseUrl}}/wishlists/1/products/4",
+									"host": [
+										"{{baseUrl}}"
+									],
+									"path": [
+										"wishlists",
+										"1",
+										"products",
+										"4"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Remove wishlist item",
+							"request": {
+								"method": "DELETE",
+								"header": [],
+								"url": {
+									"raw": "{{baseUrl}}/wishlists/1/products/3",
+									"host": [
+										"{{baseUrl}}"
+									],
+									"path": [
+										"wishlists",
+										"1",
+										"products",
+										"3"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Delete wishlist",
+							"request": {
+								"method": "DELETE",
+								"header": [],
+								"url": {
+									"raw": "{{baseUrl}}/wishlists/1",
+									"host": [
+										"{{baseUrl}}"
+									],
+									"path": [
+										"wishlists",
+										"1"
+									]
+								}
+							},
+							"response": []
+						}
+					]
+				}
+			],
+			"auth": {
+				"type": "bearer",
+				"bearer": [
+					{
+						"key": "token",
+						"value": "{{token}}",
+						"type": "string"
+					}
+				]
+			},
+			"event": [
+				{
+					"listen": "prerequest",
+					"script": {
+						"type": "text/javascript",
+						"exec": [
+							""
+						]
+					}
+				},
+				{
+					"listen": "test",
+					"script": {
+						"type": "text/javascript",
+						"exec": [
+							""
+						]
+					}
+				}
+			]
+		},
+		{
+			"name": "Cocktail",
+			"item": [
+				{
+					"name": "get user cocktails",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "eyJhbGciOiJIUzUxMiJ9.eyJzdWIiOiJ1c2VyIiwiYXV0aCI6IlJPTEVfVVNFUiIsImV4cCI6MTcyNjg1OTgzMn0._TDPrm64ffft29rqZZ-3-L20c7LXwdRSdd5yHzbcGvT8s8Ot3LGniSJk1PDGHYn805lKqy87IPB4mskWM-v2xA",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{baseUrl}}/cocktails",
+							"host": [
+								"{{baseUrl}}"
+							],
+							"path": [
+								"cocktails"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "get cocktail by id",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "eyJhbGciOiJIUzUxMiJ9.eyJzdWIiOiJ1c2VyIiwiYXV0aCI6IlJPTEVfVVNFUiIsImV4cCI6MTcyNjgwODI5MH0.cIF8qgZh_mFDxiboKq1G7dVQaP8uvJ5lbj2zxM7GjACAmCvY-Swgsnk9q7mbQBWBhS9wzPleW8PvYrIxEkvRpQ",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{baseUrl}}/cocktails/6",
+							"host": [
+								"{{baseUrl}}"
+							],
+							"path": [
+								"cocktails",
+								"6"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "admin get all cocktails",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "eyJhbGciOiJIUzUxMiJ9.eyJzdWIiOiJhZG1pbiIsImF1dGgiOiJST0xFX0FETUlOIiwiZXhwIjoxNzI2ODU4ODgxfQ.s4SAztPU3wBZVZOnvfeB3axOXFifSltSS_xkTy8zcOoHv2kbVvIBdvnnA8JgbPRuZgVbEk-CI5IqrmM3ZWAd_Q",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{baseUrl}}/cocktails",
+							"host": [
+								"{{baseUrl}}"
+							],
+							"path": [
+								"cocktails"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "create cocktail",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "eyJhbGciOiJIUzUxMiJ9.eyJzdWIiOiJ1c2VyIiwiYXV0aCI6IlJPTEVfVVNFUiIsImV4cCI6MTcyNjg1OTgzMn0._TDPrm64ffft29rqZZ-3-L20c7LXwdRSdd5yHzbcGvT8s8Ot3LGniSJk1PDGHYn805lKqy87IPB4mskWM-v2xA",
+									"type": "string"
+								}
+							]
+						},
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"id\": 6,\r\n    \"name\": \"vodka and tonic\",\r\n    \"ingredients\": [\r\n        {\r\n            \"id\": 19,\r\n            \"name\": \"vodka\"\r\n        },\r\n        {\r\n            \"id\": 8,\r\n            \"name\": \"Tonic\"\r\n        }\r\n    ],\r\n    \"glass\": {\r\n        \"id\": 4,\r\n        \"name\": \"Collins\"\r\n    },\r\n    \"instructions\": \"Fill glass with ice and add the gin first ant then top with tonic\",\r\n    \"userId\": 1,\r\n    \"public\": false\r\n}\r\n        ",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{baseUrl}}/cocktails",
+							"host": [
+								"{{baseUrl}}"
+							],
+							"path": [
+								"cocktails"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "delete cocktail",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "eyJhbGciOiJIUzUxMiJ9.eyJzdWIiOiJ1c2VyIiwiYXV0aCI6IlJPTEVfVVNFUiIsImV4cCI6MTcyNjg1OTgzMn0._TDPrm64ffft29rqZZ-3-L20c7LXwdRSdd5yHzbcGvT8s8Ot3LGniSJk1PDGHYn805lKqy87IPB4mskWM-v2xA",
+									"type": "string"
+								}
+							]
+						},
+						"method": "DELETE",
+						"header": [],
+						"url": {
+							"raw": "{{baseUrl}}/cocktails/8",
+							"host": [
+								"{{baseUrl}}"
+							],
+							"path": [
+								"cocktails",
+								"8"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "update a cocktail",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "eyJhbGciOiJIUzUxMiJ9.eyJzdWIiOiJ1c2VyIiwiYXV0aCI6IlJPTEVfVVNFUiIsImV4cCI6MTcyNjg1OTgzMn0._TDPrm64ffft29rqZZ-3-L20c7LXwdRSdd5yHzbcGvT8s8Ot3LGniSJk1PDGHYn805lKqy87IPB4mskWM-v2xA",
+									"type": "string"
+								}
+							]
+						},
+						"method": "PUT",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"id\": 6,\r\n    \"name\": \"daiquiri\",\r\n    \"ingredients\": [\r\n        {\r\n            \"id\": 2,\r\n            \"name\": \"Lime juice\"\r\n        },\r\n        {\r\n            \"id\": 15,\r\n            \"name\": \"Simple syrup\"\r\n        },\r\n        {\r\n            \"id\": 16,\r\n            \"name\": \"rum\"\r\n        },\r\n        {\r\n            \"name\": \"angostura bitters\"\r\n        }\r\n    ],\r\n    \"glass\": {\r\n        \"name\": \"Nick and nora\"\r\n    },\r\n    \"instructions\": \"Combine ingredients into a shaker tin and shake for 10 seconds. Double strain into a coupe.\",\r\n    \"userId\": 1,\r\n    \"public\": true\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{baseUrl}}/cocktails/6",
+							"host": [
+								"{{baseUrl}}"
+							],
+							"path": [
+								"cocktails",
+								"6"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "delete all user cocktails",
+					"request": {
+						"method": "DELETE",
+						"header": []
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Login",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"var jsonData = pm.response.json();\r",
+							"pm.collectionVariables.set(\"token\", jsonData.token);\r",
+							""
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"protocolProfileBehavior": {
+				"strictSSL": false
+			},
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"username\": \"user\",\r\n    \"password\": \"password\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "{{baseUrl}}/login",
+					"host": [
+						"{{baseUrl}}"
+					],
+					"path": [
+						"login"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Register user",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"username\": \"mike\",\r\n    \"password\": \"password\",\r\n    \"confirmPassword\": \"password\",\r\n    \"role\": \"USER\",\r\n    \"name\": \"User One\",\r\n    \"address\": \"1 User address, Anyplace 12345\",\r\n    \"city\": \"Willowick\",\r\n    \"stateCode\": \"OH\",\r\n    \"zip\": \"44094\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "{{baseUrl}}/register",
+					"host": [
+						"{{baseUrl}}"
+					],
+					"path": [
+						"register"
+					]
+				}
+			},
+			"response": []
+		}
+	],
+	"event": [
+		{
+			"listen": "prerequest",
+			"script": {
+				"type": "text/javascript",
+				"exec": [
+					""
+				]
+			}
+		},
+		{
+			"listen": "test",
+			"script": {
+				"type": "text/javascript",
+				"exec": [
+					""
+				]
+			}
+		}
+	],
+	"variable": [
+		{
+			"key": "baseUrl",
+			"value": "http://localhost:8080",
+			"type": "default"
+		},
+		{
+			"key": "token",
+			"value": "eyJhbGciOiJIUzUxMiJ9.eyJzdWIiOiJ1c2VyIiwiYXV0aCI6IlJPTEVfVVNFUiIsImV4cCI6MTY1NzY0MzI3NH0.DVYTDK3fsn80scCDYSCxdN4itbTObMVVzlpJmNZd1pC-Uh1fjLwUPN-du-OjeUTFBtDWvEuPiVjXXd1L_Dzh-A",
+			"type": "default"
+		}
+	]
+}
