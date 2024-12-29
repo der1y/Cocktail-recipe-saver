@@ -6,10 +6,9 @@
       <nav>
         <router-link class="nav-style" :to="{ name: 'home' }">Home</router-link>
         <router-link class="nav-style" :to="{ name: 'PublicUsers' }">Community</router-link>
-        <router-link class="nav-style" v-bind:to="{ name: 'logout' }" v-if="$store.state.token">
+        <router-link class="nav-style" :to="{ name: 'logout' }" v-if="$store.state.token">
           Logout
         </router-link>
-        <!-- <router-link v-bind:to="{ name: 'login' }" v-else>Login</router-link> -->
       </nav>
     </div>
 
@@ -36,7 +35,6 @@ body {
   top: 0;
   left: 0;
   z-index: 2;
-  /* border-bottom: 1px solid #7A9598; */
 }
 
 #cart-app {

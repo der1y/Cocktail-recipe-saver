@@ -1,6 +1,6 @@
 <template>
     <span>
-        <header id="thing">
+        <header id="title-actions">
             <div>
                 <h2 id="title"> {{ cocktail.name }}</h2>
             </div>
@@ -37,7 +37,7 @@ export default {
         deleteCocktail() {
             if (confirm("Are you sure you want to delete this cocktail? This action cannot be undone.")) {
 
-                // TODO - Do a delete, then navigate Home on success
+                // Do a delete, then navigate Home on success
                 // For errors, call handleErrorResponse
                 CocktailService
                     .deleteCocktail(this.cocktail.id)
@@ -45,7 +45,11 @@ export default {
                         if (response.status === 204) {
                             this.$router.push({ name: 'home' });
                         }
-                    });
+                    })
+                    .catch (error => {
+                        this.handleErrorResponse(error, "deleting");
+                    }
+                    );
             }
         },
         handleErrorResponse(error, verb) {
@@ -53,7 +57,7 @@ export default {
                 if (error.response.status == 404) {
                     this.$router.push({ name: 'NotFoundView' });
                 } else if (error.response.status == 403) {
-                    this.$router.push({ name: 'NotFoundView'})
+                    this.$router.push({ name: 'NoAccessView'})
                 } else {
                     this.$store.commit('SET_NOTIFICATION',
                         `Error ${verb} cocktail. Response received was "${error.response.statusText}".`);
@@ -121,7 +125,7 @@ ul {
     margin: 0;
 }
 
-#thing {
+#title-actions {
     display: flex;
     flex-direction: row;
     justify-content: space-between;

@@ -32,8 +32,8 @@
             <div class="field">
                 <select name="public" id="public" v-model="editCocktail.public">
                     <option disabled value="">Is it public?</option>
-                    <option :value="true">True</option>
-                    <option :value="false">False</option>
+                    <option :value="true">Is it public: True</option>
+                    <option :value="false">Is it public: False</option>
                 </select>
             </div>
             <div class="actions">
@@ -56,7 +56,7 @@ export default {
     },
     data() {
         return {
-
+            // Copy the prop details into the editCocktail object.
             editCocktail: {
                 id: this.cocktail.id,
                 name: this.cocktail.name,
@@ -70,7 +70,7 @@ export default {
         };
     },
     methods: {
-
+        // Create a new field for a new ingredient.
         addNewInputField() {
             this.editCocktail.ingredients.push({
                 name: '',
@@ -78,12 +78,12 @@ export default {
                 unit: '',
             });
         },
+
+        // Remove any of the ingredient fields.
         removeInputField(index) {
             this.editCocktail.ingredients.splice(index, 1);
         },
         submitCocktail() {
-            // Client-side validation 
-
             // Check for add or edit
             if (this.editCocktail.id === 0) {
                 CocktailService

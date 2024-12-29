@@ -22,7 +22,7 @@ export default {
                 this.cocktail = response.data;
             })
             .catch(error => {
-                this.handleErrorResponse(error, "unaccessible");
+                this.handleErrorResponse(error, "accessing");
             });
         },
         handleErrorResponse(error, verb) {
@@ -43,6 +43,7 @@ export default {
         }
     },
     created() {
+        // Get the cocktailId from the route to pass into the method.
         this.getCocktail(this.$route.params.cocktailId);
     },
     

@@ -1,6 +1,6 @@
 <template>
       <div id="search-box">
-        <input type="text" name="search" id="search" v-on:keyup.enter="searchCocktails()" v-model="searchString" placeholder="Search..."/>
+        <input type="text" name="search" id="search" v-on:keyup.enter="search()" v-model="searchString" placeholder="Search..."/>
       </div>
   </template>
   
@@ -18,7 +18,9 @@
       };
     },
     methods: {
-      searchCocktails() {
+
+      // Perform the search based on which route you are in
+      search() {
         this.$router.push({ name: this.$route.name , query: { searchTerm: this.searchString } });
       },
     },
@@ -33,10 +35,10 @@
     padding: 5px
   }
   
-  /* #search:focus-visible {
+  #search:focus-visible {
     outline: #283618 solid 2px;
     border-radius: 5px;
     opacity: 0.75;
-  } */
+  }
   
   </style>

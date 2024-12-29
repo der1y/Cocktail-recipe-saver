@@ -26,6 +26,7 @@ import SearchBox from '../components/SearchBox.vue';
 export default {
     data () {
         return {
+            // Username is gotten if we are looking at a user who has public cocktails
             username: this.$route.query.name
         }
     },

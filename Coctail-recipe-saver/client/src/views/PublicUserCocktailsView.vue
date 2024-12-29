@@ -34,6 +34,9 @@
       isLoggedIn() {
         return this.$store.state.token.length > 0;
       },
+
+    // Check if there is a search term in the query and then filter the cocktails based on that.
+    // If no search term then just return all the users who have public cocktails.
       cocktailData() {
         const searchTerm = this.$route.query.searchTerm;
         if (searchTerm != null) {
@@ -42,14 +45,6 @@
   
         return this.cocktails
       },
-    },
-    watch: {
-      '$route.query.searchTerm': {
-        immediate: true,
-        handler() {
-          this.cocktailData; // Update on route change
-        }
-      }
     },
     created() {
         this.getCocktails(this.userId);

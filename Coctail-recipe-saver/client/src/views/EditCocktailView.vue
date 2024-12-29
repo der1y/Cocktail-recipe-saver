@@ -26,22 +26,28 @@
             this.cocktail = response.data;
           })
           .catch(error => {
-            if (error.response) {
-              if (error.response.status == 404) {
-                this.$router.push({name: 'NotFoundView'});
-              } else {
-                this.$store.commit('SET_NOTIFICATION',
-                `Error getting cocktail. Response received was "${error.response.statusText}".`);
-              }
-            } else if (error.request) {
-              this.$store.commit('SET_NOTIFICATION', `Error getting cocktail. Server could not be reached.`);
-            } else {
-              this.$store.commit('SET_NOTIFICATION', `Error getting cocktail. Request could not be created.`);
-            }
+            this.handleErrorResponse(error, "getting")
           })
-      }
+      },
+      handleErrorResponse(error, verb) {
+            if (error.response) {
+                if (error.response.status == 404) {
+                    this.$router.push({ name: 'NotFoundView' });
+                } else if (error.response.status == 403) {
+                    this.$router.push({ name: 'NoAccessView'})
+                } else {
+                    this.$store.commit('SET_NOTIFICATION',
+                        `Error ${verb} cocktail. Response received was "${error.response.statusText}".`);
+                }
+            } else if (error.request) {
+                this.$store.commit('SET_NOTIFICATION', `Error ${verb} cocktail. Server could not be reached.`);
+            } else {
+                this.$store.commit('SET_NOTIFICATION', `Error ${verb} cocktail. Request could not be created.`);
+            }
+        }
     },
     created() {
+      // Get the cocktailId from the route to pass into the method.
       this.getCocktail(this.$route.params.cocktailId);
     } 
   };

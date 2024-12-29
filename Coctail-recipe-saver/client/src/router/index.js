@@ -11,9 +11,8 @@ import AddCocktailView from '../views/AddCocktailView.vue'
 import NotFoundView from '../views/NotFoundView.vue'
 import EditCocktailView from '../views/EditCocktailView.vue'
 import NoAccessView from '../views/NoAccessView.vue'
-import UserCocktailsView from '../views/UserCocktailsView.vue'
+import PublicUsersView from '../views/PublicUsersView.vue'
 import PublicUserCocktailsView from '../views/PublicUserCocktailsView.vue'
-//soy una mala influencia para mis companeros <3
 
 
 
@@ -91,7 +90,7 @@ const routes = [
   {
     path: '/users',
     name: 'PublicUsers',
-    component: UserCocktailsView,
+    component: PublicUsersView,
     meta: {
       requiresAuth: true
     }
